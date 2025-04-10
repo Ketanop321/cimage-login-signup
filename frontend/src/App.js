@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="vh-100 gradient-custom">
     <div className="container">
-      <h1 className="page-header text-center">Login/signup page</h1>
+      {/* <h1 className="page-header text-center">Login/signup page</h1> */}
    
       <BrowserRouter>
         <Routes>

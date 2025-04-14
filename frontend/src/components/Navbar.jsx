@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { BookOpen, Menu, X } from "lucide-react";
+import { href } from "react-router-dom";
+
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,15 +11,16 @@ export default function Navbar() {
   };
 
   const navLinks = [
-
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
-    { label: "Programs", href: "#" },
-    { label: "Campus Life", href: "#" },
-    { label: "Contact", href: "#" }
+    { label: "Programee", href: "/programme" },
+    { label: "Campuslife", href: "/campuslife" },
+    { label: "Contact", href: "/contact" }
   ];
   
   return (
+    <>
+
     <nav className="fixed top-0 left-0 right-0 bg-white bg-opacity-80 backdrop-blur-md shadow-sm z-50 px-4 lg:px-8 py-3">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="flex items-center">
@@ -65,5 +68,6 @@ export default function Navbar() {
         </div>
       )}
     </nav>
+    </>
   );
 }

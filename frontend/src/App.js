@@ -8,6 +8,9 @@ import LandingPage from "./pages/Landingpage";
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import AboutPage from './pages/Aboutpage';
+import ProgrammePage from './pages/Programmepage';
+import CampusLifePage from './pages/CampusPage';
+import Contactpage from './pages/ContactPage';
  
 function App() {
   return (
@@ -17,6 +20,9 @@ function App() {
    
       <BrowserRouter>
         <Routes>
+          <Route path='/contact' element={<Contactpage/>}/>
+          <Route path='/campuslife' element={<CampusLifePage/>}/>
+          <Route path='/programme' element={<ProgrammePage/>}/>
             <Route path='/about' element={<AboutPage/>}/>
             <Route path="/" element={<LandingPage />} />
             <Route path="/login" element={<LoginPage />} />

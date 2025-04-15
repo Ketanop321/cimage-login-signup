@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import { FaUtensils, FaBook, FaHeartbeat, FaRunning, FaUsers, FaLeaf, FaCalendarAlt, FaChevronRight, FaQuoteLeft, FaPlay } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
+import TestimonialCarousel from '../components/campus-life/TestimonialCarousel';
+import { testimonials } from '../components/campus-life/data/testimonial';
+import ContactHelp from '../components/campus-life/needhelpsection';
+import MediaGallery from '../components/campus-life/MediaGallery';
 
 const CampusLifePage = () => {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -28,34 +32,8 @@ const CampusLifePage = () => {
     { id: 8, category: 'hostels', image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
   ];
 
-  const testimonials = [
-    {
-      name: 'Alex Johnson',
-      department: 'Computer Science',
-      year: 'Senior',
-      quote: 'The campus life here is incredible! Between the tech clubs and sports facilities, there\'s always something exciting happening.',
-      image: 'https://randomuser.me/api/portraits/men/32.jpg'
-    },
-    {
-      name: 'Sarah Williams',
-      department: 'Business Administration',
-      year: 'Junior',
-      quote: 'I love how the college balances academics with extracurriculars. The meditation rooms help me stay centered during busy weeks.',
-      image: 'https://randomuser.me/api/portraits/women/44.jpg'
-    },
-    {
-      name: 'Michael Chen',
-      department: 'Engineering',
-      year: 'Sophomore',
-      quote: 'The maker spaces and innovation labs are game-changers. I\'ve already developed two prototypes with campus resources!',
-      image: 'https://randomuser.me/api/portraits/men/22.jpg'
-    }
-  ];
-
-  const filteredGallery = activeFilter === 'all' 
-    ? galleryItems 
-    : galleryItems.filter(item => item.category === activeFilter);
-
+   
+ 
   return (
     <>
       <Navbar/>
@@ -114,150 +92,13 @@ const CampusLifePage = () => {
       </div>
 
       {/* Media Gallery */}
-      <div className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-              Campus <span className="text-blue-600">Gallery</span>
-            </h2>
-            <p className="mt-4 text-xl text-gray-600 max-w-2xl mx-auto">
-              A glimpse into the vibrant life at our college
-            </p>
-          </div>
+      
+      <MediaGallery />
 
-          <div className="flex flex-wrap justify-center gap-4 mb-8">
-            <button 
-              onClick={() => setActiveFilter('all')}
-              className={`px-4 py-2 rounded-full ${activeFilter === 'all' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'} transition-colors duration-300`}
-            >
-              All
-            </button>
-            <button 
-              onClick={() => setActiveFilter('events')}
-              className={`px-4 py-2 rounded-full ${activeFilter === 'events' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'} transition-colors duration-300`}
-            >
-              Events
-            </button>
-            <button 
-              onClick={() => setActiveFilter('clubs')}
-              className={`px-4 py-2 rounded-full ${activeFilter === 'clubs' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'} transition-colors duration-300`}
-            >
-              Clubs
-            </button>
-            <button 
-              onClick={() => setActiveFilter('sports')}
-              className={`px-4 py-2 rounded-full ${activeFilter === 'sports' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'} transition-colors duration-300`}
-            >
-              Sports
-            </button>
-            <button 
-              onClick={() => setActiveFilter('hostels')}
-              className={`px-4 py-2 rounded-full ${activeFilter === 'hostels' ? 'bg-blue-600 text-white' : 'bg-gray-200 text-gray-700'} transition-colors duration-300`}
-            >
-              Hostels
-            </button>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {filteredGallery.map((item) => (
-              <div key={item.id} className="relative group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
-                <img 
-                  src={item.image} 
-                  alt="Campus life" 
-                  className="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="text-white">
-                    <h3 className="font-bold capitalize">{item.category}</h3>
-                  </div>
-                </div>
-                {item.id === 5 && (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-white/30 backdrop-blur-sm rounded-full p-4 group-hover:scale-110 transition-transform duration-300">
-                      <FaPlay className="text-white text-2xl" />
-                    </div>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* Testimonials */}
-      <div className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-50 to-purple-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl">
-              Student <span className="text-blue-600">Voices</span>
-            </h2>
-            <p className="mt-4 text-xl text-gray-600 max-w-2xl mx-auto">
-              Hear what our students say about campus life
-            </p>
-          </div>
-
-          <div className="relative max-w-4xl mx-auto">
-            <div className="overflow-hidden">
-              <div 
-                className="flex transition-transform duration-500 ease-in-out"
-                style={{ transform: `translateX(-${activeTestimonial * 100}%)` }}
-              >
-                {testimonials.map((testimonial, index) => (
-                  <div key={index} className="w-full flex-shrink-0 px-4">
-                    <div className="bg-white p-8 rounded-xl shadow-lg">
-                      <div className="flex items-start">
-                        <div className="mr-6">
-                          <img 
-                            src={testimonial.image} 
-                            alt={testimonial.name} 
-                            className="w-20 h-20 rounded-full object-cover border-4 border-blue-100"
-                          />
-                        </div>
-                        <div>
-                          <FaQuoteLeft className="text-blue-200 text-3xl mb-2" />
-                          <p className="text-lg text-gray-700 mb-4">{testimonial.quote}</p>
-                          <div>
-                            <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
-                            <p className="text-gray-600">{testimonial.department}, {testimonial.year}</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <button 
-              onClick={() => setActiveTestimonial((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1))}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors duration-300"
-            >
-              <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button 
-              onClick={() => setActiveTestimonial((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1))}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition-colors duration-300"
-            >
-              <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-
-            <div className="flex justify-center mt-8 space-x-2">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setActiveTestimonial(index)}
-                  className={`w-3 h-3 rounded-full ${activeTestimonial === index ? 'bg-blue-600' : 'bg-gray-300'}`}
-                  aria-label={`Go to testimonial ${index + 1}`}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+     
+     <TestimonialCarousel testimonials={testimonials} />
 
       {/* Call to Action */}
       <div className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white">
@@ -283,36 +124,9 @@ const CampusLifePage = () => {
       </div>
 
       {/* Contact & FAQ */}
-      <div className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl mb-12 text-center">
-            Need <span className="text-blue-600">Help?</span>
-          </h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-gray-50 p-6 rounded-xl hover:shadow-md transition-shadow duration-300">
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Housing Office</h3>
-              <p className="text-gray-600 mb-4">Questions about dormitories or off-campus housing</p>
-              <a href="#" className="text-blue-600 font-medium hover:underline">Contact →</a>
-            </div>
-            <div className="bg-gray-50 p-6 rounded-xl hover:shadow-md transition-shadow duration-300">
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Dining Services</h3>
-              <p className="text-gray-600 mb-4">Meal plans, dietary restrictions, or cafeteria hours</p>
-              <a href="#" className="text-blue-600 font-medium hover:underline">Contact →</a>
-            </div>
-            <div className="bg-gray-50 p-6 rounded-xl hover:shadow-md transition-shadow duration-300">
-              <h3 className="text-xl font-bold text-gray-800 mb-3">Student Affairs</h3>
-              <p className="text-gray-600 mb-4">General student life questions and support</p>
-              <a href="#" className="text-blue-600 font-medium hover:underline">Contact →</a>
-            </div>
-            <div className="bg-gray-50 p-6 rounded-xl hover:shadow-md transition-shadow duration-300">
-              <h3 className="text-xl font-bold text-gray-800 mb-3">FAQs</h3>
-              <p className="text-gray-600 mb-4">Find answers to common questions</p>
-              <a href="#" className="text-blue-600 font-medium hover:underline">View FAQs →</a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ContactHelp />
+      
+
     </div>
     </>
   );

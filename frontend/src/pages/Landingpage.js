@@ -1,7 +1,6 @@
-// LandingPage.jsx
+// src/pages/LandingPage.jsx
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import ThreeDModel from "../components/ThreeDModel";
 import { 
   ChevronRight, 
   BookOpen, 
@@ -9,11 +8,11 @@ import {
   LogIn 
 } from "lucide-react";
 
-// Components
-import Navbar from "../components/Navbar";
+ import Navbar from "../components/Navbar";
 import FeatureCard from "../components/FeatureCard";
 import Footer from "../components/Footer";
 import CTAButton from "../components/CTAButton";
+import ThreeDModel from "../components/ThreeDModel";
 
 // Data
 import { features } from "../data/featureData";
@@ -37,22 +36,25 @@ export default function LandingPage() {
       {/* Navigation */}
       <Navbar />
       
-      {/* Hero Section */}
-      <HeroSection isLoaded={isLoaded} />
       
-      {/* Features Section */}
-      <FeaturesSection features={features} />
-      
-      {/* Call to Action */}
-      <CTASection />
-      
-      {/* Footer */}
-      <Footer currentYear={currentYear} />
+      <div className="pt-10">  
+        {/* Hero Section */}
+        <HeroSection isLoaded={isLoaded} />
+        
+        {/* Features Section */}
+        <FeaturesSection features={features} />
+        
+        {/* Call to Action */}
+        <CTASection />
+        
+        {/* Footer */}
+        <Footer currentYear={currentYear} />
+      </div>
     </div>
   );
 }
 
-// Hero Section Component
+// Hero Section Component - Moving to a separate file but keeping within the landing page for now
 function HeroSection({ isLoaded }) {
   return (
     <section className="pt-20 pb-10 relative overflow-hidden" aria-labelledby="hero-heading">
@@ -114,7 +116,7 @@ function HeroSection({ isLoaded }) {
   );
 }
 
-// Features Section Component
+// Features Section Component - Moving to a separate file but keeping within the landing page for now
 function FeaturesSection({ features }) {
   return (
     <section className="py-12 bg-white" aria-labelledby="features-heading">
@@ -141,7 +143,7 @@ function FeaturesSection({ features }) {
   );
 }
 
-// CTA Section Component
+// CTA Section Component - Moving to a separate file but keeping within the landing page for now
 function CTASection() {
   return (
     <section className="py-16 bg-gradient-to-r from-sky-600 to-blue-700 text-white" aria-labelledby="cta-heading">

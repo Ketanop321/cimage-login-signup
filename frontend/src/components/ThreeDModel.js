@@ -49,7 +49,20 @@ function Model({ modelPath, scale = 2 }) {
   );
 }
 
-// Loading spinner component
+// Skeleton loader for 3D model
+function SkeletonLoader() {
+  return (
+    <div className="w-full h-full flex flex-col items-center justify-center animate-pulse">
+      {/* 3D box skeleton using divs only */}
+      <div className="w-24 h-20 bg-sky-100 rounded-lg shadow-inner mb-3"></div>
+      <div className="w-16 h-10 bg-sky-50 rounded-md mb-3"></div>
+      <div className="w-28 h-6 bg-sky-100 rounded mb-2"></div>
+      <div className="w-16 h-4 bg-sky-50 rounded"></div>
+    </div>
+  );
+}
+
+// Loading spinner component (fallback for slow loads)
 function LoadingSpinner() {
   return (
     <div className="w-full h-full flex justify-center items-center">
@@ -117,24 +130,23 @@ export default function ThreeDModel({ modelPath = "/models/untitled1.glb" }) {
     return 2;
   };
 
-  if (isLoading) return <LoadingSpinner />;
+  if (isLoading) return <SkeletonLoader />;
   if (error) return <div className="text-red-600 p-4">{error}</div>;
 
   return (
     <div className="model-wrapper relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-sky-50 to-white">
       <ErrorBoundary>
-        <Canvas 
-          style={{ height: "500px" }}
-          camera={{ position: [0, 0, 5], fov: 45 }}
-          dpr={Math.min(window.devicePixelRatio, 2)} // Cap DPR at 2 for performance
-          gl={{ antialias: true, alpha: true }}
-          performance={{ min: 0.5 }} // Lower performance on slower devices
-        >
-          <ambientLight intensity={0.8} />
-          <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
-          <directionalLight position={[-5, 5, 2]} intensity={0.5} />
-          
-          <Suspense fallback={null}>
+        <React.Suspense fallback={null}>
+          <Canvas 
+            style={{ height: "500px" }}
+            camera={{ position: [0, 0, 5], fov: 45 }}
+            dpr={Math.min(window.devicePixelRatio, 2)} // Cap DPR at 2 for performance
+            gl={{ antialias: true, alpha: true }}
+            performance={{ min: 0.5 }} // Lower performance on slower devices
+          >
+            <ambientLight intensity={0.8} />
+            <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
+            <directionalLight position={[-5, 5, 2]} intensity={0.5} />
             <PresentationControls
               global
               snap
@@ -145,18 +157,16 @@ export default function ThreeDModel({ modelPath = "/models/untitled1.glb" }) {
               <Model modelPath={modelPath} scale={getModelScale()} />
             </PresentationControls>
             <Environment preset="city" />
-          </Suspense>
-          
-          <OrbitControls 
-            enableZoom={false}
-            enablePan={false}
-            minPolarAngle={Math.PI / 4}
-            maxPolarAngle={Math.PI / 2}
-            enableDamping
-            dampingFactor={0.05}
-          />
-        </Canvas>
-        
+            <OrbitControls 
+              enableZoom={false}
+              enablePan={false}
+              minPolarAngle={Math.PI / 4}
+              maxPolarAngle={Math.PI / 2}
+              enableDamping
+              dampingFactor={0.05}
+            />
+          </Canvas>
+        </React.Suspense>
         <div className="absolute bottom-4 right-4 bg-white bg-opacity-70 backdrop-blur-sm px-3 py-2 rounded-lg text-sm text-sky-800 shadow-sm">
           <p>Drag to rotate model</p>
         </div>

@@ -8,9 +8,7 @@ import {
   LogIn 
 } from "lucide-react";
 
- import Navbar from "../components/Navbar";
 import FeatureCard from "../components/FeatureCard";
-import Footer from "../components/Footer";
 import CTAButton from "../components/CTAButton";
 import ThreeDModel from "../components/ThreeDModel";
 
@@ -33,10 +31,6 @@ export default function LandingPage() {
   
   return (
     <div className="bg-gradient-to-br from-sky-50 to-blue-100 min-h-screen font-sans">
-      {/* Navigation */}
-      <Navbar />
-      
-      
       <div className="pt-10">  
         {/* Hero Section */}
         <HeroSection isLoaded={isLoaded} />
@@ -46,9 +40,6 @@ export default function LandingPage() {
         
         {/* Call to Action */}
         <CTASection />
-        
-        {/* Footer */}
-        <Footer currentYear={currentYear} />
       </div>
     </div>
   );

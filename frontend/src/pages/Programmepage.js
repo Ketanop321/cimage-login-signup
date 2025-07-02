@@ -1,6 +1,5 @@
- import { Phone, Mail, MapPin } from "lucide-react";
-import { useState } from "react";
-import { ChevronDown, ChevronUp, ChevronRight, Star, Calendar, Clock, BookOpen, Award, Users, Check, Search, Download, Send } from "lucide-react";
+ import { useState } from "react";
+import { Clock, Check, ChevronRight } from "lucide-react";
 import Navbar from "../components/Navbar";
 import StudentTestimonials from "../components/programme/TestimonialCard";
 import FaqSection from "../components/programme/FAQItem";
@@ -10,23 +9,14 @@ import ContactEnquirySection from "../components/programme/EnquiryForm";
 import CallToAction from "../components/programme/CallToAction";
 import { programmes } from "../components/programme/programmedata/Programmes";
 
-
 export default function ProgrammePage() {
   const [selectedProgramme, setSelectedProgramme] = useState(null);
-  const [activeFaq, setActiveFaq] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     courseInterest: "",
   });
-
-
-//   
-
-  const toggleFaq = (id) => {
-    setActiveFaq(activeFaq === id ? null : id);
-  };
 
   const handleOpenModal = (programme) => {
     setSelectedProgramme(programme);

@@ -1,12 +1,36 @@
 // ThreeDModel.jsx
-import React, { Suspense, useRef, useEffect } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import React, { Suspense, useRef, useState, useEffect } from "react";
+import { Canvas, useThree, extend, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Environment, PresentationControls } from "@react-three/drei";
+import { DRACOLoader } from 'three-stdlib';
+// Extend Three.js with DRACOLoader
+extend({ DRACOLoader });
 
-function Model() {
+// Configure DRACO loader
+const dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
+dracoLoader.setDecoderConfig({ type: 'js' });
+
+function Model({ modelPath, scale = 2 }) {
   const modelRef = useRef();
-  const gltf = useGLTF("/models/untitled1.glb");
-  
+  const { scene } = useThree();
+  const gltf = useGLTF(modelPath, undefined, undefined, loader => {
+    loader.setDRACOLoader(dracoLoader);
+  });
+
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      // Dispose of geometries and materials to prevent memory leaks
+      scene.traverse(child => {
+        if (child.isMesh) {
+          child.geometry?.dispose();
+          child.material?.dispose();
+        }
+      });
+    };
+  }, [scene]);
+
   // Subtle automatic rotation animation
   useFrame((state) => {
     if (modelRef.current) {
@@ -18,8 +42,9 @@ function Model() {
     <primitive 
       ref={modelRef}
       object={gltf.scene} 
-      scale={2} 
-      position={[0, 0.1, 0]} // Adjust position as needed
+      scale={scale}
+      position={[0, 0.1, 0]}
+      dispose={null}
     />
   );
 }
@@ -29,51 +54,113 @@ function LoadingSpinner() {
   return (
     <div className="w-full h-full flex justify-center items-center">
       <div className="w-12 h-12 border-4 border-sky-200 border-t-sky-600 rounded-full animate-spin"></div>
+      <span className="ml-3 text-sky-700">Loading 3D model...</span>
     </div>
   );
 }
 
-export default function ThreeDModel() {
+// Error boundary component
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="w-full h-full flex items-center justify-center bg-red-50 rounded-lg p-4">
+          <p className="text-red-600">Failed to load 3D model. Please try again later.</p>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
+
+export default function ThreeDModel({ modelPath = "/models/untitled1.glb" }) {
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Preload assets
+  useEffect(() => {
+    const preloadAssets = async () => {
+      try {
+        // Preload the model when component mounts
+        await useGLTF.preload(modelPath, undefined, undefined, loader => {
+          loader.setDRACOLoader(dracoLoader);
+        });
+      } catch (err) {
+        console.error('Error preloading model:', err);
+        setError('Failed to load 3D model');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    preloadAssets();
+  }, [modelPath]);
+
+  // Responsive scaling based on viewport width
+  const getModelScale = () => {
+    if (typeof window !== 'undefined') {
+      const width = window.innerWidth;
+      if (width < 640) return 1.5;  // Mobile
+      if (width < 1024) return 1.8; // Tablet
+      return 2;                     // Desktop
+    }
+    return 2;
+  };
+
+  if (isLoading) return <LoadingSpinner />;
+  if (error) return <div className="text-red-600 p-4">{error}</div>;
+
   return (
     <div className="model-wrapper relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-sky-50 to-white">
-      {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-sky-100 rounded-full opacity-50 blur-xl -mr-10 -mt-10"></div>
-      <div className="absolute bottom-0 left-0 w-40 h-40 bg-blue-100 rounded-full opacity-30 blur-xl -ml-10 -mb-10"></div>
-      
-      <Canvas 
-        style={{ height: "500px" }}
-        camera={{ position: [0, 0, 5], fov: 45 }}
-        dpr={[1, 2]} // Optimize for high DPI displays
-      >
-        <ambientLight intensity={0.8} />
-        <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
-        <directionalLight position={[-5, 5, 2]} intensity={0.5} />
+      <ErrorBoundary>
+        <Canvas 
+          style={{ height: "500px" }}
+          camera={{ position: [0, 0, 5], fov: 45 }}
+          dpr={Math.min(window.devicePixelRatio, 2)} // Cap DPR at 2 for performance
+          gl={{ antialias: true, alpha: true }}
+          performance={{ min: 0.5 }} // Lower performance on slower devices
+        >
+          <ambientLight intensity={0.8} />
+          <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
+          <directionalLight position={[-5, 5, 2]} intensity={0.5} />
+          
+          <Suspense fallback={null}>
+            <PresentationControls
+              global
+              snap
+              rotation={[0, 0, 0]}
+              polar={[-Math.PI / 4, Math.PI / 4]}
+              azimuth={[-Math.PI / 4, Math.PI / 4]}
+            >
+              <Model modelPath={modelPath} scale={getModelScale()} />
+            </PresentationControls>
+            <Environment preset="city" />
+          </Suspense>
+          
+          <OrbitControls 
+            enableZoom={false}
+            enablePan={false}
+            minPolarAngle={Math.PI / 4}
+            maxPolarAngle={Math.PI / 2}
+            enableDamping
+            dampingFactor={0.05}
+          />
+        </Canvas>
         
-        <Suspense fallback={null}>
-          <PresentationControls
-            global
-            snap
-            rotation={[0, 0, 0]}
-            polar={[-Math.PI / 4, Math.PI / 4]}
-            azimuth={[-Math.PI / 4, Math.PI / 4]}
-          >
-            <Model />
-          </PresentationControls>
-          <Environment preset="city" />
-        </Suspense>
-        
-        <OrbitControls 
-          enableZoom={false}
-          enablePan={false}
-          minPolarAngle={Math.PI / 4}
-          maxPolarAngle={Math.PI / 2}
-        />
-      </Canvas>
-      
-      {/* Interaction hint */}
-      <div className="absolute bottom-4 right-4 bg-white bg-opacity-70 backdrop-blur-sm px-3 py-2 rounded-lg text-sm text-sky-800 shadow-sm">
-        <p>Drag to rotate model</p>
-      </div>
+        <div className="absolute bottom-4 right-4 bg-white bg-opacity-70 backdrop-blur-sm px-3 py-2 rounded-lg text-sm text-sky-800 shadow-sm">
+          <p>Drag to rotate model</p>
+        </div>
+      </ErrorBoundary>
     </div>
   );
 }

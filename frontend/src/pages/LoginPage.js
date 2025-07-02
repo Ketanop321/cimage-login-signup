@@ -41,8 +41,11 @@ export default function LoginPage() {
       }
     }
     
-    setErrors(newErrors);
-  }, [email, password, touched]);
+    // Only update if there are actual changes to prevent infinite loops
+    if (JSON.stringify(newErrors) !== JSON.stringify(errors)) {
+      setErrors(newErrors);
+    }
+  }, [email, password, touched, errors]);
 
   const handleBlur = (field) => {
     setTouched({ ...touched, [field]: true });

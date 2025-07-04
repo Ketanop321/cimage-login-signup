@@ -22,6 +22,9 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-
 /public/models/*.glb
 .vercel
+
+# Source maps
+*.map
+node_modules/**/*.map

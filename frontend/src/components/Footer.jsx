@@ -41,19 +41,19 @@ export default function Footer() {
                 Affiliated to Aaryabhatta Knowledge University (AKU) & Patliputra University (PPU).
               </p>
               <div className="flex space-x-4 pt-2">
-                <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <a href="https://www.facebook.com/cimage/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
                   <Facebook size={20} />
                 </a>
-                <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <a href="https://x.com/cimagecollege" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
                   <Twitter size={20} />
                 </a>
-                <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
-                  <Linkedin size={20} />
-                </a>
-                <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <a href="https://www.instagram.com/cimagecollege/" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
                   <Instagram size={20} />
                 </a>
-                <a href="#" className="text-gray-300 hover:text-red-400 transition-colors duration-300">
+                <a href="https://www.linkedin.com/school/cimage/people/?originalSubdomain=in" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                  <Linkedin size={20} />
+                </a>
+                <a href="https://www.youtube.com/@cimage2" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-red-400 transition-colors duration-300">
                   <Youtube size={20} />
                 </a>
               </div>
@@ -73,37 +73,38 @@ export default function Footer() {
             </div>
             <ul className={`space-y-2 ${expandedSections.quickLinks ? 'block' : 'hidden'} md:block`}>
               <li>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a href="#" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
                   <ExternalLink size={16} className="mr-2" />
                   CIMAGE Professional College
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
+                <a href="https://www.cimagecollege.com/law" target="_blank" rel="noopener noreferrer" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
                   <ExternalLink size={16} className="mr-2" />
                   CIMAGE National Law College
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
+                <a href="https://www.cimagecollege.com/admissions" target="_blank" rel="noopener noreferrer" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
                   <ExternalLink size={16} className="mr-2" />
                   Admission
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
+                <a href="https://www.cimagecollege.com/affiliation" target="_blank" rel="noopener noreferrer" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
                   <ExternalLink size={16} className="mr-2" />
                   CIMAGE Affiliation
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
+                <a href="https://www.cimagecollege.com/fee-structure" target="_blank" rel="noopener noreferrer" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
                   <ExternalLink size={16} className="mr-2" />
                   Fee Structure
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
+                <a href="https://www.cimagecollege.com/student-credit-card" target="_blank" rel="noopener noreferrer" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
                   <ExternalLink size={16} className="mr-2" />
                   Student Credit Card
                 </a>
@@ -124,32 +125,33 @@ export default function Footer() {
             </div>
             <ul className={`space-y-2 ${expandedSections.courses ? 'block' : 'hidden'} md:block`}>
               <li>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a href="#" className="text-sm hover:text-blue-300 transition-colors duration-300">
                   BCA (Under AKU & PPU)
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm hover:text-blue-300 transition-colors duration-300">
+                <a href="https://www.cimagecollege.com/courses/bba" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-blue-300 transition-colors duration-300">
                   BBA (Under AKU)
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm hover:text-blue-300 transition-colors duration-300">
+                <a href="https://www.cimagecollege.com/courses/bbm" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-blue-300 transition-colors duration-300">
                   BBM (Under PPU)
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm hover:text-blue-300 transition-colors duration-300">
+                <a href="https://www.cimagecollege.com/courses/bcom" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-blue-300 transition-colors duration-300">
                   B.Com (P) (Under AKU)
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm hover:text-blue-300 transition-colors duration-300">
+                <a href="https://www.cimagecollege.com/courses/bscit" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-blue-300 transition-colors duration-300">
                   B.Sc-IT (Under PPU)
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm hover:text-blue-300 transition-colors duration-300">
+                <a href="https://www.cimagecollege.com/courses/pgdm" target="_blank" rel="noopener noreferrer" className="text-sm hover:text-blue-300 transition-colors duration-300">
                   PGDM (Under AIMA)
                 </a>
               </li>
@@ -188,13 +190,16 @@ export default function Footer() {
         <div className="mt-8 pt-6 border-t border-blue-800">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-xs text-gray-400 mb-4 md:mb-0">
-              Copyright © VIJAYAM Educational Trust {currentYear}. All rights reserved.
+              Copyright &copy; VIJAYAM Educational Trust {currentYear}. All rights reserved.
             </p>
             <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 text-xs text-center md:text-left">
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">Privacy Policy</a>
               <span className="text-gray-600 hidden md:inline">|</span>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">Refund Policy</a>
               <span className="text-gray-600 hidden md:inline">|</span>
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">Terms & Conditions</a>
             </div>
           </div>

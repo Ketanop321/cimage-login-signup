@@ -162,20 +162,47 @@ export default function AboutPage() {
           <h2 className="text-3xl font-bold mb-10 text-center text-blue-800">Our Leadership</h2>
           <div className="flex justify-center">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl">
-              {[1, 2, 3].map((item) => (
-                <div key={item} className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                  <img 
-                    src={`/api/placeholder/300/300`} 
-                    alt={`Leader ${item}`} 
-                    className="w-full h-64 object-cover"
-                  />
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold mb-1 text-blue-800">Dr. John Doe</h3>
-                    <p className="text-gray-600 mb-3">Director, CIMAGE Group</p>
-                    <p className="text-gray-700 text-sm">Ph.D in Management with 20+ years of academic and industry experience.</p>
-                  </div>
+              {/* Leader 1 - Neeraj Aggarwal */}
+              <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                <img 
+                  src="/image/neeraj-aggarwal.jpg" 
+                  alt="Neeraj Aggarwal" 
+                  className="w-full h-64 object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-1 text-blue-800">Neeraj Aggarwal</h3>
+                  <p className="text-gray-600 mb-3">Director, CIMAGE Group</p>
+                  <p className="text-gray-700 text-sm">Ph.D in Management with 20+ years of academic and industry experience.</p>
                 </div>
-              ))}
+              </div>
+
+              {/* Leader 2 - Neeraj Poddar */}
+              <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                <img 
+                  src="/image/neeraj-poddar.jpg" 
+                  alt="Neeraj Poddar" 
+                  className="w-full h-64 object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-1 text-blue-800">Neeraj Poddar</h3>
+                  <p className="text-gray-600 mb-3">Dean of Academics</p>
+                  <p className="text-gray-700 text-sm">Ph.D in Computer Science with expertise in AI and Machine Learning.</p>
+                </div>
+              </div>
+
+              {/* Leader 3 - Dr. Priya Sharma */}
+              <div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                <img 
+                  src="/image/ka.jpg" 
+                  alt="Amit Shukla" 
+                  className="w-full h-64 object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-bold mb-1 text-blue-800">Ketan</h3>
+                  <p className="text-gray-600 mb-3">Head of Student Affairs</p>
+                  <p className="text-gray-700 text-sm">MBA with extensive experience in student counseling and career development.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

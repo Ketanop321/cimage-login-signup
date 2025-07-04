@@ -134,43 +134,61 @@ export default function ThreeDModel({ modelPath = "/models/untitled1.glb" }) {
   if (error) return <div className="text-red-600 p-4">{error}</div>;
 
   return (
-    <div className="model-wrapper relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-sky-50 to-white">
-      <ErrorBoundary>
-        <React.Suspense fallback={null}>
-          <Canvas 
-            style={{ height: "500px" }}
-            camera={{ position: [0, 0, 5], fov: 45 }}
-            dpr={Math.min(window.devicePixelRatio, 2)} // Cap DPR at 2 for performance
-            gl={{ antialias: true, alpha: true }}
-            performance={{ min: 0.5 }} // Lower performance on slower devices
-          >
-            <ambientLight intensity={0.8} />
-            <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
-            <directionalLight position={[-5, 5, 2]} intensity={0.5} />
-            <PresentationControls
-              global
-              snap
-              rotation={[0, 0, 0]}
-              polar={[-Math.PI / 4, Math.PI / 4]}
-              azimuth={[-Math.PI / 4, Math.PI / 4]}
-            >
-              <Model modelPath={modelPath} scale={getModelScale()} />
-            </PresentationControls>
-            <Environment preset="city" />
-            <OrbitControls 
-              enableZoom={false}
-              enablePan={false}
-              minPolarAngle={Math.PI / 4}
-              maxPolarAngle={Math.PI / 2}
-              enableDamping
-              dampingFactor={0.05}
-            />
-          </Canvas>
-        </React.Suspense>
-        <div className="absolute bottom-4 right-4 bg-white bg-opacity-70 backdrop-blur-sm px-3 py-2 rounded-lg text-sm text-sky-800 shadow-sm">
-          <p>Drag to rotate model</p>
-        </div>
-      </ErrorBoundary>
+    <div style={{
+      width: '100vw',
+      height: '100vh',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center'
+    }}>
+      <Canvas 
+        style={{
+          width: '100%',
+          height: '100%',
+          position: 'absolute',
+          top: 0,
+          left: 0
+        }}
+        camera={{
+          position: [0, 50, 10],
+          fov: 45,
+          near: 0.1,
+          far: 100
+        }}
+        dpr={Math.min(window.devicePixelRatio, 2)} // Cap DPR at 2 for performance
+        gl={{ antialias: true, alpha: true }}
+        performance={{ min: 0.5 }} // Lower performance on slower devices
+      >
+        <ambientLight intensity={0.8} />
+        <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
+        <directionalLight position={[-5, 5, 2]} intensity={0.5} />
+        <PresentationControls
+          global
+          snap
+          rotation={[0, 0, 0]}
+          polar={[-Math.PI / 4, Math.PI / 4]}
+          azimuth={[-Math.PI / 4, Math.PI / 4]}
+        >
+          <Suspense fallback={null}>
+            <Model modelPath={modelPath} scale={1.0} />
+            <Environment preset="sunset" />
+          </Suspense>
+        </PresentationControls>
+        <OrbitControls
+          enableZoom={true}
+          enablePan={true}
+          enableRotate={true}
+          minDistance={5}
+          maxDistance={20}
+          maxPolarAngle={Math.PI / 2}
+          target={[0, 0, 0]}
+          enableDamping
+          dampingFactor={0.05}
+        />
+      </Canvas>
+      <div className="absolute bottom-4 right-4 bg-white bg-opacity-70 backdrop-blur-sm px-3 py-2 rounded-lg text-sm text-sky-800 shadow-sm">
+        <p>Drag to rotate model</p>
+      </div>
     </div>
   );
 }

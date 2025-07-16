@@ -7,7 +7,7 @@ yoooooooooooooooooooooo!!
 
 1. Clone the repository
 2. Navigate to the backend directory
-3. Create a virtual environment:
+ 
 
 
 5. Install dependencies:

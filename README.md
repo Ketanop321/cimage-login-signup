@@ -9,10 +9,6 @@ yoooooooooooooooooooooo!!
 2. Navigate to the backend directory
 3. Create a virtual environment:
 
-```shellscript
-python -m venv venv
-```
-
 
 5. Install dependencies:
 

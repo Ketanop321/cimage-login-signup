@@ -59,7 +59,7 @@ const TabsSection = ({ achievements, facilities, scholarships }) => {
               </p>
             </div>
             <div className="md:w-1/2">
-              <img src="/api/placeholder/600/400" alt="Students in classroom" className="w-full rounded-lg shadow-lg" />
+              <img src="https://catalystcollege.in/sitepanel/uploads/aboutus/WhatsApp%20Image%202024-11-13%20at%205.43.07%20PM%20(1).jpeg" alt="Students in classroom" className="w-full rounded-lg shadow-lg" />
             </div>
           </div>
         )}

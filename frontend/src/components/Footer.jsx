@@ -41,19 +41,19 @@ export default function Footer() {
                 Affiliated to Aaryabhatta Knowledge University (AKU) & Patliputra University (PPU).
               </p>
               <div className="flex space-x-4 pt-2">
-                <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <a href="https://www.facebook.com/cimage" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
                   <Facebook size={20} />
                 </a>
-                <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <a href="https://twitter.com/cimagecollege" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
                   <Twitter size={20} />
                 </a>
-                <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <a href="https://www.linkedin.com/company/cimage" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
                   <Linkedin size={20} />
                 </a>
-                <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
+                <a href="https://www.instagram.com/cimagecollege" className="text-gray-300 hover:text-blue-400 transition-colors duration-300">
                   <Instagram size={20} />
                 </a>
-                <a href="#" className="text-gray-300 hover:text-red-400 transition-colors duration-300">
+                <a href="https://www.youtube.com/cimagepatna" className="text-gray-300 hover:text-red-400 transition-colors duration-300">
                   <Youtube size={20} />
                 </a>
               </div>
@@ -73,39 +73,45 @@ export default function Footer() {
             </div>
             <ul className={`space-y-2 ${expandedSections.quickLinks ? 'block' : 'hidden'} md:block`}>
               <li>
-                <a href="#" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
+                <a href="https://cimagecollege.com/" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
                   <ExternalLink size={16} className="mr-2" />
                   CIMAGE Professional College
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
+                <a href="https://cimagelawcollege.com/" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
                   <ExternalLink size={16} className="mr-2" />
                   CIMAGE National Law College
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
+                <a href="https://cimage.in/admissions" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
                   <ExternalLink size={16} className="mr-2" />
                   Admission
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
+                <a href="https://cimage.in/cimage-affiliation" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
                   <ExternalLink size={16} className="mr-2" />
                   CIMAGE Affiliation
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
+                <a href="https://cimage.in/cimage-fee-structure" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
                   <ExternalLink size={16} className="mr-2" />
                   Fee Structure
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
+                <a href="https://cimage.in/student-credit-card" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
                   <ExternalLink size={16} className="mr-2" />
                   Student Credit Card
+                </a>
+              </li>
+              <li>
+                <a href="https://cimage.in/games" className="text-sm flex items-center hover:text-blue-300 transition-colors duration-300">
+                  <ExternalLink size={16} className="mr-2" />
+                  Games Developed by CIMAGEIAns
                 </a>
               </li>
             </ul>
@@ -124,27 +130,27 @@ export default function Footer() {
             </div>
             <ul className={`space-y-2 ${expandedSections.courses ? 'block' : 'hidden'} md:block`}>
               <li>
-                <a href="#" className="text-sm hover:text-blue-300 transition-colors duration-300">
+                <a href="https://cimage.in/courses/best-bca-college-in-patna-1" className="text-sm hover:text-blue-300 transition-colors duration-300">
                   BCA (Under AKU & PPU)
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm hover:text-blue-300 transition-colors duration-300">
+                <a href="https://cimage.in/courses/best-bba-college-in-patna-2" className="text-sm hover:text-blue-300 transition-colors duration-300">
                   BBA (Under AKU)
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm hover:text-blue-300 transition-colors duration-300">
+                <a href="https://cimage.in/courses/best-bbm-college-in-patna-4" className="text-sm hover:text-blue-300 transition-colors duration-300">
                   BBM (Under PPU)
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm hover:text-blue-300 transition-colors duration-300">
+                <a href="https://cimage.in/courses/best-bcom-college-in-patna-5" className="text-sm hover:text-blue-300 transition-colors duration-300">
                   B.Com (P) (Under AKU)
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm hover:text-blue-300 transition-colors duration-300">
+                <a href="https://cimage.in/courses/best-bsc-it-college-in-patna-3" className="text-sm hover:text-blue-300 transition-colors duration-300">
                   B.Sc-IT (Under PPU)
                 </a>
               </li>
@@ -191,11 +197,11 @@ export default function Footer() {
               Copyright © VIJAYAM Educational Trust {currentYear}. All rights reserved.
             </p>
             <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 text-xs text-center md:text-left">
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">Privacy Policy</a>
+              <a href="https://cimage.in/privacy-policy" className="text-gray-400 hover:text-white transition-colors duration-300">Privacy Policy</a>
               <span className="text-gray-600 hidden md:inline">|</span>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">Refund Policy</a>
+              <a href="https://cimage.in/refund-policy" className="text-gray-400 hover:text-white transition-colors duration-300">Refund Policy</a>
               <span className="text-gray-600 hidden md:inline">|</span>
-              <a href="#" className="text-gray-400 hover:text-white transition-colors duration-300">Terms & Conditions</a>
+              <a href="https://cimage.in/terms-and-conditions-for-online-payment" className="text-gray-400 hover:text-white transition-colors duration-300">Terms & Conditions</a>
             </div>
           </div>
         </div>

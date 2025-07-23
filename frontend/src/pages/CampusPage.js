@@ -20,19 +20,6 @@ const CampusLifePage = () => {
     { icon: <FaLeaf className="text-3xl" />, title: 'Campus Environment', description: 'Beautiful green spaces and gardens', color: 'bg-teal-100' },
     { icon: <FaCalendarAlt className="text-3xl" />, title: 'Events & Festivals', description: 'Cultural fests and tech events', color: 'bg-yellow-100' },
   ];
-
-  const galleryItems = [
-    { id: 1, category: 'events', image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
-    { id: 2, category: 'clubs', image: 'https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
-    { id: 3, category: 'sports', image: 'https://images.unsplash.com/photo-1547347298-4074fc3086f0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
-    { id: 4, category: 'hostels', image: 'https://images.unsplash.com/photo-1582719471389-8d831c6f1e44?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
-    { id: 5, category: 'events', image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
-    { id: 6, category: 'clubs', image: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
-    { id: 7, category: 'sports', image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
-    { id: 8, category: 'hostels', image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
-  ];
-
-   
  
   return (
     <>
@@ -42,7 +29,7 @@ const CampusLifePage = () => {
       <div className="relative h-96 md:h-screen max-h-[700px] overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-purple-900/80 z-10"></div>
         <img 
-          src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" 
+          src="https://plus.unsplash.com/premium_photo-1682075199550-037fff6d7486?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NjF8fGNvbGxlZ2UlMjBwYXNzb3V0JTIwbGlmZXxlbnwwfHwwfHx8MA%3D%3D" 
           alt="Campus life" 
           className="w-full h-full object-cover"
         />

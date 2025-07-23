@@ -3,13 +3,11 @@ import { FaPlay } from 'react-icons/fa';
 
 const galleryItems = [
   { id: 1, category: 'events', image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
-  { id: 2, category: 'clubs', image: 'https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
-  { id: 3, category: 'sports', image: 'https://images.unsplash.com/photo-1547347298-4074fc3086f0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
-  { id: 4, category: 'hostels', image: 'https://images.unsplash.com/photo-1582719471389-8d831c6f1e44?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
-  { id: 5, category: 'events', image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
-  { id: 6, category: 'clubs', image: 'https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
-  { id: 7, category: 'sports', image: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
-  { id: 8, category: 'hostels', image: 'https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
+  { id: 2, category: 'clubs', image: 'https://instagram.fpat2-5.fna.fbcdn.net/v/t39.30808-6/426526017_782810800541528_6311780189719782357_n.jpg?stp=dst-jpg_e35_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjIwNDh4MTM2NS5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpat2-5.fna.fbcdn.net&_nc_cat=108&_nc_oc=Q6cZ2QFkeHOSFwdKtZSAUJmOwMWfFCrUKf6fv98rKgLu6YMC5lhVHU8BG4viH_fN1MEpCrU&_nc_ohc=RZ-hvtWNUBEQ7kNvwGLYIKi&_nc_gid=sQ-dzG4AMmuh5oi9UL9Q7Q&edm=APs17CUAAAAA&ccb=7-5&ig_cache_key=MzMwMzIzMzgwNDI0ODQwODI0Nw%3D%3D.3-ccb7-5&oh=00_AfTWJY053o1E-NCTpelDL4QtamPqzijc-MhcnlAkEPtvMw&oe=68871644&_nc_sid=10d13b' },
+  { id: 3, category: 'sports', image: 'https://www.cimage.in/sitepanel/uploads/cimage_event/10%20(1).jpg' },
+  { id: 4, category: 'events', image: 'https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' },
+  { id: 5, category: 'clubs', image: 'https://instagram.fpat2-5.fna.fbcdn.net/v/t39.30808-6/426514517_782810680541540_1757122101104534186_n.jpg?stp=dst-jpg_e35_s1080x1080_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6IkNBUk9VU0VMX0lURU0uaW1hZ2VfdXJsZ2VuLjIwNDh4MTM2NS5zZHIuZjMwODA4LmRlZmF1bHRfaW1hZ2UuYzIifQ&_nc_ht=instagram.fpat2-5.fna.fbcdn.net&_nc_cat=108&_nc_oc=Q6cZ2QH7TRLoufmBYD9UuYJynF8z0f8T4DBK_Yovz_XFAfeWI8HHylfZ79ZDZJlT0pW_Wj4&_nc_ohc=OXgcBF1UN34Q7kNvwHGwuTW&_nc_gid=KDxSoTYd75iqOn4rD4-VqA&edm=APs17CUAAAAA&ccb=7-5&ig_cache_key=MzMwMzIzMzgwNDMwNzA2NzIxNQ%3D%3D.3-ccb7-5&oh=00_AfQbh6LayN0sp_WdF2H9u2nYOeog6GBsT8Qu1WUAZlWd-A&oe=68872C50&_nc_sid=10d13b' },
+  { id: 6, category: 'sports', image: 'https://www.cimage.in/sitepanel/uploads/cimage_event/426061371_775917417897533_3763743187655767495_n.jpg' },
 ];
 
 const MediaGallery = () => {
@@ -20,7 +18,7 @@ const MediaGallery = () => {
       ? galleryItems
       : galleryItems.filter((item) => item.category === activeFilter);
 
-  const filters = ['all', 'events', 'clubs', 'sports', 'hostels'];
+  const filters = ['all', 'events', 'clubs', 'sports'];
 
   return (
     <div className="py-16 px-4 sm:px-6 lg:px-8 bg-white">

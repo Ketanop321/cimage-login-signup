@@ -5,7 +5,7 @@ const HeroSection = () => {
   return (
     <div className="relative h-96 overflow-hidden">
       <img 
-        src="/api/placeholder/1920/600" 
+        src="https://cimage.in/sitepanel/uploads/images/Background_01.jpg" 
         alt="CIMAGE Campus" 
         className="w-full h-full object-cover"
       />

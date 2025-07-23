@@ -2,19 +2,31 @@ import React from 'react';
 import { FaQuoteLeft } from 'react-icons/fa';
 import { useTestimonialNavigation } from './hooks/useTestimonialNavigation';
 
-interface Testimonial {
-  name: string;
-  department: string;
-  year: string;
-  quote: string;
-  image: string;
-}
+const TestimonialCarousel = () => {
+  const testimonials = [
+    {
+      name: 'Rajesh Kumar',
+      department: 'BCA Graduate',
+      year: '2023',
+      quote:
+        'CIMAGE has transformed my career prospects. The unique teaching pedagogy and focus on practical skills helped me secure a position at TCS. The faculty mentorship and industry connections are unparalleled.',
+    },
+    {
+      name: 'Priya Singh',
+      department: 'BBA Graduate',
+      year: '2022',
+      quote:
+        'The hands-on experience and real-world projects made learning enjoyable. I feel confident stepping into the corporate world.',
+    },
+    {
+      name: 'Amit Verma',
+      department: 'BCA',
+      year: '2021',
+      quote:
+        'Supportive faculty and great placement opportunities. Highly recommend CIMAGE to anyone serious about their career.',
+    },
+  ];
 
-interface Props {
-  testimonials: Testimonial[];
-}
-
-const TestimonialCarousel: React.FC<Props> = ({ testimonials }) => {
   const { activeIndex, goToNext, goToPrev, goToIndex } = useTestimonialNavigation(testimonials.length);
 
   return (
@@ -38,22 +50,19 @@ const TestimonialCarousel: React.FC<Props> = ({ testimonials }) => {
               {testimonials.map((testimonial, index) => (
                 <div key={index} className="w-full flex-shrink-0 px-4">
                   <div className="bg-white p-8 rounded-xl shadow-lg">
-                    <div className="flex items-start">
-                      <div className="mr-6">
-                        <img
-                          src={testimonial.image}
-                          alt={testimonial.name}
-                          className="w-20 h-20 rounded-full object-cover border-4 border-blue-100"
-                        />
-                      </div>
-                      <div>
-                        <FaQuoteLeft className="text-blue-200 text-3xl mb-2" />
-                        <p className="text-lg text-gray-700 mb-4">{testimonial.quote}</p>
-                        <div>
-                          <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
-                          <p className="text-gray-600">{testimonial.department}, {testimonial.year}</p>
-                        </div>
-                      </div>
+                    {/* Quote block with FaQuoteLeft at start and end */}
+                    <div className="flex items-start text-lg text-gray-700 mb-6">
+                      <FaQuoteLeft className="text-blue-300 text-xl mr-2 mt-1" />
+                      <p className="flex-1 pt-3">{testimonial.quote}</p>
+                      <FaQuoteLeft className="text-blue-300 text-xl ml-2 mt-1 transform rotate-180 self-end" />
+                    </div>
+
+                    {/* Centered name and department/year */}
+                    <div className="text-center">
+                      <h4 className="font-bold text-gray-900">{testimonial.name}</h4>
+                      <p className="text-gray-600">
+                        {testimonial.department}, {testimonial.year}
+                      </p>
                     </div>
                   </div>
                 </div>

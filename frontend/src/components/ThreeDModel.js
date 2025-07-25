@@ -96,7 +96,7 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-export default function ThreeDModel({ modelPath = "/models/untitled1.glb" }) {
+export default function ThreeDModel({ modelPath = "https://u0ons3wvpixqh0xx.public.blob.vercel-storage.com/student.glb" }) {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 

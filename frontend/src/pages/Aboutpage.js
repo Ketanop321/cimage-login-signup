@@ -125,7 +125,7 @@ export default function AboutPage() {
               </div>
               <div className="md:w-1/2 relative">
                 <img
-                  src="https://cimage.in/sitepanel/uploads/aboutus/cimage-about-cm.jpg"
+                  src="https://cimage.in/wp-content/uploads/2025/06/cimage-about-cm-1-2048x1290.webp"
                   alt="CIMAGE Campus"
                   className="w-full rounded-lg shadow-xl"
                 />

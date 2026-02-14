@@ -49,25 +49,20 @@ function Model({ modelPath, scale = 2 }) {
   );
 }
 
-// Skeleton loader for 3D model
-function SkeletonLoader() {
+// Loading overlay for 3D model — shown when user initially enters the page
+function ModelLoadingOverlay() {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center animate-pulse">
-      {/* 3D box skeleton using divs only */}
-      <div className="w-24 h-20 bg-sky-100 rounded-lg shadow-inner mb-3"></div>
-      <div className="w-16 h-10 bg-sky-50 rounded-md mb-3"></div>
-      <div className="w-28 h-6 bg-sky-100 rounded mb-2"></div>
-      <div className="w-16 h-4 bg-sky-50 rounded"></div>
-    </div>
-  );
-}
-
-// Loading spinner component (fallback for slow loads)
-function LoadingSpinner() {
-  return (
-    <div className="w-full h-full flex justify-center items-center">
-      <div className="w-12 h-12 border-4 border-sky-200 border-t-sky-600 rounded-full animate-spin"></div>
-      <span className="ml-3 text-sky-700">Loading 3D model...</span>
+    <div 
+      className="model-wrapper relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-sky-50 to-white flex flex-col items-center justify-center"
+      style={{ height: "500px" }}
+    >
+      {/* Spinner */}
+      <div className="w-14 h-14 border-4 border-sky-200 border-t-sky-600 rounded-full animate-spin mb-4"></div>
+      {/* Loading text */}
+      <span className="text-lg font-medium text-sky-700 tracking-wide">
+        Loading 3D model.......
+      </span>
+      <span className="text-sm text-sky-500 mt-1">Please wait</span>
     </div>
   );
 }
@@ -86,7 +81,7 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="w-full h-full flex items-center justify-center bg-red-50 rounded-lg p-4">
+        <div className="w-full h-full flex items-center justify-center bg-red-50 rounded-lg p-4"> 
           <p className="text-red-600">Failed to load 3D model. Please try again later.</p>
         </div>
       );
@@ -130,13 +125,13 @@ export default function ThreeDModel({ modelPath = "https://u0ons3wvpixqh0xx.publ
     return 2;
   };
 
-  if (isLoading) return <SkeletonLoader />;
+  if (isLoading) return <ModelLoadingOverlay />;
   if (error) return <div className="text-red-600 p-4">{error}</div>;
 
   return (
     <div className="model-wrapper relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-sky-50 to-white">
       <ErrorBoundary>
-        <React.Suspense fallback={null}>
+        <React.Suspense fallback={<ModelLoadingOverlay />}>  
           <Canvas 
             style={{ height: "500px" }}
             camera={{ position: [0, 0, 5], fov: 45 }}

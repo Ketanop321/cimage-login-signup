@@ -1,5 +1,5 @@
 // ThreeDModel.jsx
-import React, { Suspense, useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Canvas, useThree, extend, useFrame } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Environment, PresentationControls } from "@react-three/drei";
 import { DRACOLoader } from 'three-stdlib';

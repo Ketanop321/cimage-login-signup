@@ -1,9 +1,7 @@
 // src/pages/LandingPage.jsx
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
 import { 
   ChevronRight, 
-  BookOpen, 
   UserPlus, 
   LogIn 
 } from "lucide-react";
@@ -27,10 +25,9 @@ export default function LandingPage() {
     return () => clearTimeout(timer); // Cleanup timer on unmount
   }, []);
 
-  const currentYear = new Date().getFullYear();
-  
   return (
     <div className="bg-gradient-to-br from-sky-50 to-blue-100 min-h-screen font-sans">
+
       <div className="pt-10">  
         {/* Hero Section */}
         <HeroSection isLoaded={isLoaded} />
@@ -137,15 +134,19 @@ function FeaturesSection({ features }) {
 // CTA Section Component - Moving to a separate file but keeping within the landing page for now
 function CTASection() {
   return (
-    <section className="py-16 bg-gradient-to-r from-sky-600 to-blue-700 text-white" aria-labelledby="cta-heading">
+    <section
+      className="py-16 bg-gradient-to-r from-sky-600 to-blue-700 text-white"
+      style={{ background: "linear-gradient(to right, #0284c7, #1d4ed8)", color: "#ffffff" }}
+      aria-labelledby="cta-heading"
+    >
       <div className="max-w-7xl mx-auto px-4 text-center">
         <h2 
           id="cta-heading"
-          className="text-3xl font-bold mb-4"
+          className="text-3xl font-bold mb-4 text-white"
         >
           Ready to Start Your Journey?
         </h2>
-        <p className="text-lg text-sky-100 mb-8 max-w-2xl mx-auto">
+        <p className="text-lg text-sky-100 mb-8 max-w-2xl mx-auto" style={{ color: "rgba(255, 255, 255, 0.9)" }}>
           Take the first step toward a successful future. Join our academic community today.
         </p>
         
@@ -160,7 +161,7 @@ function CTASection() {
           </CTAButton>
           
           <CTAButton 
-            href="#" 
+            to="/about" 
             variant="transparent"
           >
             Learn More

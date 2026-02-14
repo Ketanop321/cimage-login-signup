@@ -1,5 +1,4 @@
-import { useState } from 'react';
-import { FaUtensils, FaBook, FaHeartbeat, FaRunning, FaUsers, FaLeaf, FaCalendarAlt, FaChevronRight, FaQuoteLeft, FaPlay } from 'react-icons/fa';
+import { FaUtensils, FaBook, FaHeartbeat, FaRunning, FaUsers, FaLeaf, FaCalendarAlt, FaChevronRight } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
 import TestimonialCarousel from '../components/campus-life/TestimonialCarousel';
 import { testimonials } from '../components/campus-life/data/testimonial';
@@ -7,9 +6,6 @@ import ContactHelp from '../components/campus-life/needhelpsection';
 import MediaGallery from '../components/campus-life/MediaGallery';
 
 const CampusLifePage = () => {
-  const [activeFilter, setActiveFilter] = useState('all');
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
-
   // Sample data
   const campusSections = [
     { icon: <FaUtensils className="text-3xl" />, title: 'Dining', description: 'Explore our diverse dining options and meal plans', color: 'bg-orange-100' },
@@ -20,6 +16,7 @@ const CampusLifePage = () => {
     { icon: <FaLeaf className="text-3xl" />, title: 'Campus Environment', description: 'Beautiful green spaces and gardens', color: 'bg-teal-100' },
     { icon: <FaCalendarAlt className="text-3xl" />, title: 'Events & Festivals', description: 'Cultural fests and tech events', color: 'bg-yellow-100' },
   ];
+
  
   return (
     <>

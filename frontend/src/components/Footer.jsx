@@ -155,7 +155,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm hover:text-blue-300 transition-colors duration-300">
+                <a href="/programme" className="text-sm hover:text-blue-300 transition-colors duration-300">
                   PGDM (Under AIMA)
                 </a>
               </li>

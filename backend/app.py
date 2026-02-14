@@ -1,4 +1,5 @@
 #C:\flask_dev\flaskreact\app.py
+import os
 from flask import Flask, request, jsonify, session
 from flask_bcrypt import Bcrypt #pip install Flask-Bcrypt = https://pypi.org/project/Flask-Bcrypt/
 from flask_cors import CORS, cross_origin #ModuleNotFoundError: No module named 'flask_cors' = pip install Flask-Cors
@@ -6,7 +7,7 @@ from models import db, User
  
 app = Flask(__name__)
  
-app.config['SECRET_KEY'] = 'cairocoders-ednalan'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY') or os.environ.get('FLASK_SECRET_KEY') or 'dev-secret-change-me'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flaskdb.db'
  
 SQLALCHEMY_TRACK_MODIFICATIONS = False

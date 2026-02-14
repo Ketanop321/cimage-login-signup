@@ -1,9 +1,7 @@
 // src/pages/LandingPage.jsx
 import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
 import { 
   ChevronRight, 
-  BookOpen, 
   UserPlus, 
   LogIn 
 } from "lucide-react";
@@ -27,10 +25,9 @@ export default function LandingPage() {
     return () => clearTimeout(timer); // Cleanup timer on unmount
   }, []);
 
-  const currentYear = new Date().getFullYear();
-  
   return (
     <div className="bg-gradient-to-br from-sky-50 to-blue-100 min-h-screen font-sans">
+
       <div className="pt-10">  
         {/* Hero Section */}
         <HeroSection isLoaded={isLoaded} />
@@ -164,7 +161,7 @@ function CTASection() {
           </CTAButton>
           
           <CTAButton 
-            href="#" 
+            to="/about" 
             variant="transparent"
           >
             Learn More

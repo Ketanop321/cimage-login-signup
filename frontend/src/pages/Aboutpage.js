@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { Play, Award, BookOpen, Users, Building, Briefcase, ChevronRight, MapPin, Phone, Mail } from 'lucide-react';
 import HeroSection from '../components/about/HeroSection';
 import TabsSection from '../components/about/AboutTabsSection';
 import ContactSection from '../components/about/ContactSection'
@@ -8,34 +6,6 @@ import TestimonialSection from '../components/about/testimonial'
 
 
 export default function AboutPage() {
-  const [activeTab, setActiveTab] = useState('overview');
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: ''
-  });
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  };
-
-  // Form submission handler
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      message: ''
-    });
-    alert("Thank you for your message. We'll get back to you soon!");
-  };
-
   const scholarships = [
     {
       title: "Vijayam Scholarship",

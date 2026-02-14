@@ -1,5 +1,5 @@
 //C:\react-js\myreactdev\src\App.js
-import React, { Suspense } from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
 // Layout
@@ -10,9 +10,8 @@ const LoginPage = React.lazy(() => import('./pages/LoginPage'));
 const RegisterPage = React.lazy(() => import('./pages/RegisterPage'));
 const AboutPage = React.lazy(() => import('./pages/Aboutpage'));
 const ProgrammePage = React.lazy(() => import('./pages/Programmepage'));
-const CampusLifePage = React.lazy(() => import('./pages/CampusPage'));
+const CampusLifePage = React.lazy(() => import('./pages/CampusPage')); 
 const ContactPage = React.lazy(() => import('./pages/ContactPage'));
-
 
 // Wrapper component for pages that need the layout
 const PublicRoute = ({ element: Element }) => (

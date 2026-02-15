@@ -26,3 +26,4 @@ yarn-error.log*
 /public/models/*.glb
 .vercel
 /package-lock.json
+.vercel\project.json

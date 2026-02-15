@@ -26,7 +26,7 @@ const AuthRoute = ({ element: Element }) => <Element />;
 function App() {
   return (
     <div className="app">
-      <React.Suspense fallback={<div>Loading...</div>}>
+      <React.Suspense fallback={null}>
         <Routes>
           {/* Public routes with layout */}
           <Route path="/" element={<PublicRoute element={LandingPage} />} />

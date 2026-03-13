@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { MapPin, Phone, Mail, Facebook, Twitter, Linkedin, Instagram, Youtube, ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
+import TestimonialSection from "./TestimonialSection";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -21,7 +22,12 @@ export default function Footer() {
   };
   
   return (
-    <footer className="bg-gradient-to-r from-blue-900 to-indigo-900 text-gray-200 pt-10 pb-6">
+    <footer>
+      {/* ── Testimonial slider ── */}
+      <TestimonialSection />
+
+      {/* ── Main footer grid ── */}
+      <div className="bg-gradient-to-r from-blue-900 to-indigo-900 text-gray-200 pt-10 pb-6">
       <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About Section */}
@@ -206,6 +212,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
+    </div>
     </footer>
   );
 }

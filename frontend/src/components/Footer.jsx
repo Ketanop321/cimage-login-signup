@@ -26,9 +26,9 @@ export default function Footer() {
       {/* ── Testimonial slider ── */}
       <TestimonialSection />
 
-      {/* ── Main footer grid ── */}
+      {/* ── Original footer grid (structure unchanged) ── */}
       <div className="bg-gradient-to-r from-blue-900 to-indigo-900 text-gray-200 pt-10 pb-6">
-      <div className="max-w-7xl mx-auto px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About Section */}
           <div className="space-y-4">
@@ -211,8 +211,8 @@ export default function Footer() {
             </div>
           </div>
         </div>
+        </div>
       </div>
-    </div>
     </footer>
   );
 }

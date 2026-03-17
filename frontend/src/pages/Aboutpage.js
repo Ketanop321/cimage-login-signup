@@ -186,7 +186,7 @@ export default function AboutPage() {
               <div className="rounded-lg overflow-hidden shadow-lg group">
                 <div className="relative h-64 overflow-hidden">
                   <img
-                    src="/api/placeholder/400/320"
+                    src="https://www.cimage.in/sitepanel/uploads/cimage_event/10%20(1).jpg"
                     alt="Cultural Festival"
                     className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
                   />

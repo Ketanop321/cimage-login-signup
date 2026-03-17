@@ -59,7 +59,7 @@ const TabsSection = ({ achievements, facilities, scholarships }) => {
               </p>
             </div>
             <div className="md:w-1/2">
-              <img src="https://catalystcollege.in/sitepanel/uploads/aboutus/WhatsApp%20Image%202024-11-13%20at%205.43.07%20PM%20(1).jpeg" alt="Students in classroom" className="w-full rounded-lg shadow-lg" />
+              <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="Students in classroom" className="w-full rounded-lg shadow-lg" />
             </div>
           </div>
         )}
@@ -117,8 +117,8 @@ const TabsSection = ({ achievements, facilities, scholarships }) => {
               ))}
             </div>
             <div className="flex flex-col md:flex-row gap-6">
-              <img src="/api/placeholder/600/350" alt="Campus Facilities" className="md:w-1/2 w-full h-64 object-cover rounded-lg shadow-lg" />
-              <img src="/api/placeholder/600/350" alt="Modern Classrooms" className="md:w-1/2 w-full h-64 object-cover rounded-lg shadow-lg" />
+              <img src="https://www.cimage.in/sitepanel/uploads/cimage_event/426061371_775917417897533_3763743187655767495_n.jpg" alt="Campus Facilities" className="md:w-1/2 w-full h-64 object-cover rounded-lg shadow-lg" />
+              <img src="https://www.cimage.in/sitepanel/uploads/images/Background_01.jpg" alt="Modern Classrooms" className="md:w-1/2 w-full h-64 object-cover rounded-lg shadow-lg" />
             </div>
           </div>
         )}

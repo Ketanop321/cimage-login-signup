@@ -1,4 +1,5 @@
 import HeroSection from '../components/about/HeroSection';
+import AboutSection from '../components/about/AboutSection';
 import TabsSection from '../components/about/AboutTabsSection';
 import ContactSection from '../components/about/ContactSection'
 import Navbar from '../components/Navbar';
@@ -69,39 +70,10 @@ export default function AboutPage() {
       <div>
         <div className="min-h-screen bg-gray-50">
           {/* Hero Section */}
-
           <HeroSection />
 
-          {/* Introduction Section */}
-          <div className="container mx-auto py-16 px-4">
-            <div className="flex flex-col md:flex-row items-center gap-12">
-              <div className="md:w-1/2">
-                <h2 className="text-3xl font-bold mb-6 text-blue-800">Welcome to CIMAGE Group</h2>
-                <p className="text-gray-700 mb-4">
-                  CIMAGE Group of Institutions is a renowned educational organization, situated in Patna, Bihar.
-                  Established in 2009 by 'Vijayam Education Trust', a Non-profit Charitable Trust, CIMAGE
-                  is considered to be the synonyms of 'Quality Education, Innovation in Education, Academic Rigor,
-                  Unique Teaching Pedagogy, Best Result, Job Oriented Skills Development and Placements' in Bihar.
-                </p>
-                <p className="text-gray-700 mb-6">
-                  CIMAGE was created to fill the gap left untouched by others - not only to prepare students to earn
-                  a University Degree but to make them job-worthy by keeping them abreast with the latest tools, technology,
-                  knowledge, and skills, preparing them as per industry needs and helping them get employed in top-notch organizations.
-                </p>
-                <div className="flex items-center gap-2">
-                  <div className="h-1 w-16 bg-yellow-500"></div>
-                  <p className="font-semibold text-blue-800">Inaugurated by Hon. C.M. of Bihar, Mr. Nitish Kumar in 2009</p>
-                </div>
-              </div>
-              <div className="md:w-1/2 relative">
-                <img
-                  src="https://cimage.in/wp-content/uploads/2025/06/cimage-about-cm-1-2048x1290.webp"
-                  alt="CIMAGE Campus"
-                  className="w-full rounded-lg shadow-xl"
-                />
-              </div>
-            </div>
-          </div>
+          {/* About Section – editorial luxury layout */}
+          <AboutSection />
 
           {/* Colleges Section */}
           <div className="bg-blue-800 text-white py-16">

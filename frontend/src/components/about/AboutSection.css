@@ -1,0 +1,560 @@
+/*
+ * AboutSection.css
+ * Styles for the editorial luxury "About" section of CIMAGE Group.
+ *
+ * Design tokens (aligned with project palette):
+ *   --ab-parchment   : #f7f4ef  (warm off-white background)
+ *   --ab-ink         : #1e3a5f  (deep navy text)
+ *   --ab-sky         : #0284c7  (sky-600 primary accent)
+ *   --ab-gold        : #c9a84c  (warm gold accent)
+ *   --ab-muted       : #64748b  (slate-500 for labels/body)
+ *   --ab-border      : rgba(2, 132, 199, 0.14)
+ */
+
+/* ── Root ───────────────────────────────────────────────────────── */
+.about-section {
+  position: relative;
+  background-color: #f7f4ef;
+  overflow: hidden;
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  .about-section {
+    background-color: #0d1b2e;
+    color: #e2e8f0;
+  }
+}
+
+/* ── Noise texture overlay ──────────────────────────────────────── */
+.about-noise {
+  position: absolute;
+  inset: 0;
+  /*
+   * Inline SVG feTurbulence noise rendered as a background image.
+   * Gives the parchment surface a subtle tactile depth without
+   * adding any extra network requests.
+   */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 220px 220px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Inner container ────────────────────────────────────────────── */
+.about-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 4rem 1.25rem 3.5rem;
+}
+
+@media (min-width: 768px) {
+  .about-container {
+    padding: 5rem 2rem 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-container {
+    padding: 6rem 3rem 5rem;
+  }
+}
+
+/* ── Asymmetric two-column grid ─────────────────────────────────── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+
+@media (min-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+  }
+}
+
+/* ════════════════════════════════════════════════
+   LEFT COLUMN — Portrait + Spinning Badge
+   ════════════════════════════════════════════════ */
+.about-portrait-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .about-portrait-col {
+    align-items: flex-start;
+  }
+}
+
+/* Section label row */
+.about-label-row {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  width: 100%;
+  max-width: 320px;
+}
+
+.about-label-tag {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #0284c7;
+  white-space: nowrap;
+}
+
+.about-label-rule {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(2, 132, 199, 0.5), transparent);
+  max-width: 80px;
+}
+
+.about-label-num {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #94a3b8;
+}
+
+/* Portrait outer wrapper – accommodates badge overflow */
+.about-portrait-outer {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  flex-shrink: 0;
+  /* 40px margin on all sides so the badge is fully visible */
+  margin: 40px;
+}
+
+@media (min-width: 480px) {
+  .about-portrait-outer {
+    width: 270px;
+    height: 270px;
+  }
+}
+
+/* Asymmetric portrait frame */
+.about-portrait-frame {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  /* Distinctive organic / asymmetric border-radius */
+  border-radius: 48% 52% 62% 38% / 43% 44% 56% 57%;
+  overflow: hidden;
+  box-shadow:
+    0 20px 48px rgba(2, 132, 199, 0.18),
+    0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.about-portrait-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* Gold decorative echo shape behind portrait */
+.about-portrait-deco {
+  position: absolute;
+  bottom: -14px;
+  right: -14px;
+  width: 85%;
+  height: 85%;
+  border-radius: 48% 52% 62% 38% / 43% 44% 56% 57%;
+  background: linear-gradient(135deg, #c9a84c 0%, #facc15 100%);
+  opacity: 0.22;
+  z-index: 0;
+}
+
+/*
+ * Spinning circular text badge
+ * ──────────────────────────────
+ * Positioned absolutely so it extends 40px beyond the
+ * 240×240 portrait frame (360×360 total = 240 + 2×60).
+ * The SVG textPath circle sits at r=165 inside the 360×360 viewBox.
+ */
+.about-spinning-badge {
+  position: absolute;
+  /* centre on the 240×240 portrait: (240/2 - 180) = -60px each side */
+  top: -60px;
+  left: -60px;
+  width: 360px;
+  height: 360px;
+  color: #0284c7;
+  animation: about-badge-spin 22s linear infinite;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@media (min-width: 480px) {
+  .about-spinning-badge {
+    /* centre on 270×270: (270/2 - 180) = -45px each side */
+    top: -45px;
+    left: -45px;
+  }
+}
+
+@keyframes about-badge-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@media (prefers-color-scheme: dark) {
+  .about-spinning-badge { color: #7dd3fc; }
+}
+
+/* ════════════════════════════════════════════════
+   RIGHT COLUMN — Bio, Stats, Skills, CTA
+   ════════════════════════════════════════════════ */
+.about-content-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.625rem;
+  padding-top: 0.25rem;
+}
+
+/* Availability pill */
+.about-pill-row {
+  display: flex;
+}
+
+.about-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.95rem;
+  border-radius: 9999px;
+  border: 1.5px solid rgba(2, 132, 199, 0.5);
+  background: rgba(2, 132, 199, 0.06);
+  color: #0284c7;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+@media (prefers-color-scheme: dark) {
+  .about-pill {
+    border-color: rgba(125, 211, 252, 0.4);
+    background: rgba(125, 211, 252, 0.08);
+    color: #7dd3fc;
+  }
+}
+
+/* Animated pulse dot (live-status) */
+.about-pulse {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #22c55e;
+  flex-shrink: 0;
+  animation: about-pulse-anim 2s ease-in-out infinite;
+}
+
+@keyframes about-pulse-anim {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%       { transform: scale(1.5); opacity: 0.6; }
+}
+
+/* Editorial headline */
+.about-headline {
+  font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  font-size: clamp(1.9rem, 4vw + 0.5rem, 3.25rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: #1e3a5f;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .about-headline { color: #e2e8f0; }
+}
+
+/* Italic gold accent word in headline */
+.about-headline-em {
+  font-style: italic;
+  font-weight: 700;
+  color: #c9a84c;
+}
+
+/* Bio copy */
+.about-bio {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.about-bio-lead {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #1e3a5f;
+  line-height: 1.65;
+}
+
+@media (prefers-color-scheme: dark) {
+  .about-bio-lead { color: #cbd5e1; }
+}
+
+.about-bio-body {
+  font-size: 0.9375rem;
+  color: #4b5563;
+  line-height: 1.8;
+}
+
+@media (prefers-color-scheme: dark) {
+  .about-bio-body { color: #94a3b8; }
+}
+
+/* ── Stats bar ─────────────────────────────────────────────────── */
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 1.5px solid rgba(2, 132, 199, 0.14);
+  border-radius: 0.875rem;
+  overflow: hidden;
+}
+
+.about-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.125rem 0.5rem;
+  background: rgba(255, 255, 255, 0.65);
+  transition: background 0.22s ease, transform 0.22s ease;
+}
+
+.about-stat:hover {
+  background: rgba(2, 132, 199, 0.07);
+  transform: translateY(-3px);
+}
+
+/* hairline separator between stat cards */
+.about-stat--sep {
+  border-right: 1.5px solid rgba(2, 132, 199, 0.14);
+}
+
+@media (prefers-color-scheme: dark) {
+  .about-stat {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .about-stat:hover {
+    background: rgba(125, 211, 252, 0.08);
+  }
+  .about-stat--sep {
+    border-right-color: rgba(125, 211, 252, 0.15);
+  }
+  .about-stats {
+    border-color: rgba(125, 211, 252, 0.15);
+  }
+}
+
+.about-stat-val {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #0284c7;
+  line-height: 1.1;
+}
+
+.about-stat-lbl {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-top: 0.25rem;
+  text-align: center;
+}
+
+/* ── Skill / programme chips ───────────────────────────────────── */
+.about-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.about-chip {
+  padding: 0.3125rem 0.875rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  border: 1.5px solid #cbd5e1;
+  color: #475569;
+  background: transparent;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  cursor: default;
+  user-select: none;
+}
+
+.about-chip:hover {
+  border-color: #0284c7;
+  color: #0284c7;
+  background: rgba(2, 132, 199, 0.07);
+  transform: translateY(-2px);
+}
+
+/* Primary / filled chip */
+.about-chip--primary {
+  background: #0284c7;
+  border-color: #0284c7;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.about-chip--primary:hover {
+  background: #0369a1;
+  border-color: #0369a1;
+  color: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  .about-chip {
+    border-color: #334155;
+    color: #94a3b8;
+  }
+  .about-chip:hover {
+    border-color: #7dd3fc;
+    color: #7dd3fc;
+    background: rgba(125, 211, 252, 0.08);
+  }
+}
+
+/* ── CTA row ────────────────────────────────────────────────────── */
+.about-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.about-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.22s ease, color 0.22s ease,
+              border-color 0.22s ease, transform 0.22s ease,
+              box-shadow 0.22s ease;
+}
+
+/* Filled primary button */
+.about-cta--filled {
+  padding: 0.75rem 1.875rem;
+  border-radius: 0.5rem;
+  background: #0284c7;
+  color: #ffffff;
+  border: 1.5px solid #0284c7;
+}
+
+.about-cta--filled:hover {
+  background: #0369a1;
+  border-color: #0369a1;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(2, 132, 199, 0.35);
+}
+
+/* Ghost underline button */
+.about-cta--ghost {
+  padding: 0.75rem 0;
+  border-bottom: 1.5px solid #c9a84c;
+  border-radius: 0;
+  background: transparent;
+  color: #1e3a5f;
+}
+
+.about-cta--ghost:hover {
+  color: #0284c7;
+  border-bottom-color: #0284c7;
+  transform: translateY(-2px);
+  box-shadow: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .about-cta--ghost {
+    color: #e2e8f0;
+  }
+  .about-cta--ghost:hover {
+    color: #7dd3fc;
+    border-bottom-color: #7dd3fc;
+  }
+}
+
+/* ════════════════════════════════════════════════
+   MARQUEE STRIP
+   ════════════════════════════════════════════════ */
+.about-marquee-outer {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background: #1e3a5f;
+  border-top: 1px solid rgba(201, 168, 76, 0.3);
+  padding: 0.875rem 0;
+}
+
+/* Pause on hover for accessibility / readability */
+.about-marquee-outer:hover .about-marquee-track {
+  animation-play-state: paused;
+}
+
+.about-marquee-track {
+  display: flex;
+  width: max-content;
+  /* translate by exactly half (the duplicated second set) */
+  animation: about-marquee 32s linear infinite;
+  will-change: transform;
+}
+
+@keyframes about-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.about-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+  white-space: nowrap;
+}
+
+.about-marquee-sep {
+  color: #c9a84c;
+  font-size: 0.5625rem;
+  flex-shrink: 0;
+}
+
+/* ── Reduced-motion: disable all custom animations ─────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .about-spinning-badge,
+  .about-pulse,
+  .about-marquee-track {
+    animation: none;
+  }
+  .about-stat:hover,
+  .about-chip:hover,
+  .about-cta--filled:hover,
+  .about-cta--ghost:hover {
+    transform: none;
+  }
+}

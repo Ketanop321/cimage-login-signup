@@ -1,7 +1,6 @@
  import { useState } from "react";
 import { Clock, Check, ChevronRight } from "lucide-react";
 import Navbar from "../components/Navbar";
-import StudentTestimonials from "../components/programme/TestimonialCard";
 import FaqSection from "../components/programme/FAQItem";
 import WhyChooseUs from "../components/programme/WhyChooseUs";
 import ProgrammeComparison from "../components/programme/ProgrammerComparisonTable";
@@ -218,10 +217,6 @@ export default function ProgrammePage() {
 
       
       <WhyChooseUs/>
-
-      {/* Student Testimonials */}
-      
-      <StudentTestimonials/>
 
       {/* FAQ Section */}
      

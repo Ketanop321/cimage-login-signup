@@ -1,7 +1,5 @@
 import { FaUtensils, FaBook, FaHeartbeat, FaRunning, FaUsers, FaLeaf, FaCalendarAlt, FaChevronRight } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
-import TestimonialCarousel from '../components/campus-life/TestimonialCarousel';
-import { testimonials } from '../components/campus-life/data/testimonial';
 import ContactHelp from '../components/campus-life/needhelpsection';
 import MediaGallery from '../components/campus-life/MediaGallery';
 
@@ -79,10 +77,6 @@ const CampusLifePage = () => {
       
       <MediaGallery />
 
-
-      {/* Testimonials */}
-     
-     <TestimonialCarousel testimonials={testimonials} />
 
       {/* Call to Action */}
       <div className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white">

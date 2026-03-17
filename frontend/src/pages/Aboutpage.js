@@ -2,7 +2,6 @@ import HeroSection from '../components/about/HeroSection';
 import TabsSection from '../components/about/AboutTabsSection';
 import ContactSection from '../components/about/ContactSection'
 import Navbar from '../components/Navbar';
-import TestimonialSection from '../components/about/testimonial'
 
 
 export default function AboutPage() {
@@ -227,10 +226,6 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
-
-          {/* Testimonial Section - Simplified */}
-          <TestimonialSection />
-
 
           {/* Contact Section*/}
 

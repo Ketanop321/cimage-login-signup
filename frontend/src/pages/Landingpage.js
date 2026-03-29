@@ -28,7 +28,7 @@ export default function LandingPage() {
   return (
     <div className="bg-gradient-to-br from-sky-50 to-blue-100 min-h-screen font-sans">
 
-      <div className="pt-10">  
+      <div>  
         {/* Hero Section */}
         <HeroSection isLoaded={isLoaded} />
         
@@ -45,7 +45,7 @@ export default function LandingPage() {
 // Hero Section Component - Moving to a separate file but keeping within the landing page for now
 function HeroSection({ isLoaded }) {
   return (
-    <section className="pt-20 pb-10 relative overflow-hidden" aria-labelledby="hero-heading">
+    <section className="pt-6 pb-10 relative overflow-hidden" aria-labelledby="hero-heading">
       <div className="max-w-7xl mx-auto px-4 relative">
         {/* Text Content */}
         <div className={`text-center mx-auto max-w-2xl transition-all duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}>
